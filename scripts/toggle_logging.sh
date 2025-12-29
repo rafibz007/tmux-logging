@@ -49,7 +49,7 @@ toggle_pipe_pane() {
 	else
 		set_logging_variable "logging"
 		start_pipe_pane
-		tmux select-pane -P "bg=color235"  # adjust if necessary
+		tmux select-pane -P "bg=colour17,fg=colour255"  # adjust if necessary
 	fi
 }
 
