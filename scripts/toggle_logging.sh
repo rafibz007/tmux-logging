@@ -8,12 +8,14 @@ source "$CURRENT_DIR/shared.sh"
 
 start_pipe_pane() {
 	local file=$(expand_tmux_format_path "${logging_full_filename}")
+	tmux set-option -p "@log_file" "${file}"
 	"$CURRENT_DIR/start_logging.sh" "${file}"
 	display_message "Started logging to ${logging_full_filename}"
 }
 
 stop_pipe_pane() {
 	tmux pipe-pane
+	tmux set-option -p -u "@log_file"
 	display_message "Ended logging to $logging_full_filename"
 }
 
