@@ -47,11 +47,15 @@ toggle_pipe_pane() {
 	if is_logging; then
 		set_logging_variable "not logging"
 		stop_pipe_pane
-		tmux select-pane -P "bg=-1"
+		if [[ -n "$not_logging_pane_color_properties" ]]; then
+			tmux select-pane -P "$not_logging_pane_color_properties"
+		fi
 	else
 		set_logging_variable "logging"
 		start_pipe_pane
-		tmux select-pane -P "bg=colour17,fg=colour255"  # adjust if necessary
+		if [[ -n "$logging_pane_color_properties" ]]; then
+			tmux select-pane -P "$logging_pane_color_properties"
+		fi
 	fi
 }
 

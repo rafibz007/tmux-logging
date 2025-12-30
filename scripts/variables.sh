@@ -53,3 +53,12 @@ save_complete_history_filename=$(tmux show-option -gqv "@save-complete-history-f
 save_complete_history_filename=${save_complete_history_filename:-$default_save_complete_history_filename}
 
 save_complete_history_full_filename="${save_complete_history_path}/${save_complete_history_filename}"
+
+# Configure colors for toggling logging
+default_logging_pane_color_properties=""  # example: "bg=colour17,fg=colour255"
+logging_pane_color_properties=$(tmux show-option -gqv "@logging-pane-color-properties")
+logging_pane_color_properties=${logging_pane_color_properties:-$default_logging_pane_color_properties}
+
+default_not_logging_pane_color_properties=""  # example: "bg=-1,fg=-1"
+not_logging_pane_color_properties=$(tmux show-option -gqv "@not-logging-pane-color-properties")
+not_logging_pane_color_properties=${not_logging_pane_color_properties:-$default_not_logging_pane_color_properties}
